@@ -1,36 +1,38 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Executando o Projeto
 
-## Getting Started
+Siga estas etapas para executar o projeto **Color-Cast**.
 
-First, run the development server:
+## 1. Certifique-se de ter o NPM instalado
+
+Você precisa ter o `npm` instalado. O `npm` vem com o Node.js. Para verificar se o Node.js (e o npm) estão instalados, execute:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+node -v
+npm -v
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Se não estiver instalado, baixe e instale o Node.js a partir do site oficial.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 2. Instale o PNPM globalmente
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Depois de garantir que o npm está instalado, instale o pnpm com o seguinte comando:
 
-## Learn More
+```bash
+npm install -g pnpm
+```
 
-To learn more about Next.js, take a look at the following resources:
+## 3. Instale as dependências do projeto
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Navegue até o diretório raiz do seu projeto e instale as dependências executando:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+pnpm install
+```
 
-## Deploy on Vercel
+## 4. Execute o projeto
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Para iniciar o projeto no modo de desenvolvimento, utilize o seguinte comando:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+pnpm run dev
+```
