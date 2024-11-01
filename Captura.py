@@ -1,4 +1,5 @@
 import cv2
+import time
 
 def capture():
     cap = cv2.VideoCapture(0)
@@ -8,6 +9,7 @@ def capture():
         return
 
     while True:
+        time.sleep(0.5)
         frame_capture, frame = cap.read()
 
         if not frame_capture:
