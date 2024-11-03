@@ -15,7 +15,7 @@ def capture():
     i = 0
 
     while True:
-        time.sleep(3) # Podem ser usado como tempo de bit em vez de receber uma lista de bits pra indicar que o próximo bit é válido
+        time.sleep(2) # Podem ser usado como tempo de bit em vez de receber uma lista de bits pra indicar que o próximo bit é válido
         frame_capture, frame = cap.read()
 
         if not frame_capture:
