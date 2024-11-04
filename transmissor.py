@@ -19,6 +19,12 @@ def show_bits(bits):
         cv2.imshow('Bit Sequence', countdown_image)
         cv2.waitKey(1000)
 
+    # Exibe a tela verde por 1 segundo
+    green_image = np.zeros((height, width, 3), dtype=np.uint8)
+    green_image[:] = (0, 255, 0)  # Verde
+    cv2.imshow('Bit Sequence', green_image)
+    cv2.waitKey(1000)
+
     # Adiciona "1001" antes de cada bit na sequência
     bits_with_prefix = ''.join(["1001" + bit for bit in bits])
 
