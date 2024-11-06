@@ -1,5 +1,6 @@
 import cv2
 
+
 def capture_bits_from_camera():
     cap = cv2.VideoCapture(0)
 
