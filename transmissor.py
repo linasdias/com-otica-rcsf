@@ -28,7 +28,8 @@ def show_bits(bits):
     image[:] = color
 
     # Mostra a imagem na tela
-    cv2.imshow('Start Conection', image)
+    cv2.imshow('Start Connection', image)
+    cv2.setWindowProperty('Start Connection', cv2.WND_PROP_FULLSCREEN, cv2.WINDOW_FULLSCREEN)
 
     # Aguarda 1 segundo
     cv2.waitKey(1000)
@@ -50,6 +51,7 @@ def show_bits(bits):
 
         # Mostra a imagem na tela
         cv2.imshow('Bit Sequence', image)
+        cv2.setWindowProperty('Bit Sequence', cv2.WND_PROP_FULLSCREEN, cv2.WINDOW_FULLSCREEN)
 
         # Aguarda 1 segundo
         cv2.waitKey(1000)
@@ -62,7 +64,8 @@ def show_bits(bits):
     image[:] = color
 
     # Mostra a imagem na tela
-    cv2.imshow('Start Conection', image)
+    cv2.imshow('End Connection', image)
+    cv2.setWindowProperty('End Connection', cv2.WND_PROP_FULLSCREEN, cv2.WINDOW_FULLSCREEN)
 
     # Aguarda 1 segundo
     cv2.waitKey(1000)
