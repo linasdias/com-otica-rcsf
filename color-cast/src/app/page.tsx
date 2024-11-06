@@ -13,10 +13,14 @@ export default function BinaryTransmitter() {
   const [transmissionStatus, setTransmissionStatus] = useState('idle');
   const [transmitInterval, setTransmitInterval] = useState<NodeJS.Timeout | null>(null);
 
-  // Função para validar e definir o valor da mensagem como apenas '0' ou '1'
+  // Sequência de sincronização de bits
+  const syncSequence = ['1', '0', '0', '1'];
+
+  // Concatena a sequência de sincronização ao início da mensagem
+  const fullMessage = syncSequence.join('') + message;
+
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
-    // Filtra apenas os caracteres '0' e '1'
     if (/^[01]*$/.test(value)) {
       setMessage(value);
     }
@@ -45,15 +49,15 @@ export default function BinaryTransmitter() {
       const timer = setTimeout(() => setCountdown(countdown - 1), 1000);
       return () => clearTimeout(timer);
     }
-    if (countdown === 0 && message) {
+    if (countdown === 0 && fullMessage) {
       setTransmissionStatus('start');
       let index = -1;
       const transmit = setInterval(() => {
         if (index === -1) {
           setTransmissionStatus('transmitting');
           index++;
-        } else if (index < message.length) {
-          setCurrentBit(message[index]);
+        } else if (index < fullMessage.length) {
+          setCurrentBit(fullMessage[index]);
           index++;
         } else {
           setTransmissionStatus('end');
@@ -66,18 +70,18 @@ export default function BinaryTransmitter() {
       setTransmitInterval(transmit);
       return () => clearInterval(transmit);
     }
-  }, [isTransmitting, countdown, message]);
+  }, [isTransmitting, countdown, fullMessage]);
 
   const getTransmissionColor = () => {
     switch (transmissionStatus) {
       case 'start':
-        return 'bg-[#C80000]'; // Vermelho para início
+        return 'bg-[#00C800]'; // Vermelho para início
       case 'transmitting':
-        return currentBit === '1' ? 'bg-[#ffffff]' : 'bg-[#000000]'; // branco para 1 e Preto para 0
+        return currentBit === '1' ? 'bg-[#ffffff]' : 'bg-[#000000]'; // Branco para 1 e Preto para 0
       case 'end':
-        return 'bg-[#00C800]'; // Verde para fim
+        return 'bg-[#C80000]'; // Verde para fim
       default:
-        return 'bg-[#111827]'; // Cinza Escuro
+        return 'bg-[#111827]'; // Cinza escuro
     }
   };
 
