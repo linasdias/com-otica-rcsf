@@ -46,7 +46,7 @@ def capture():
         center = frame[h // 2, w // 2]
 
     while True:
-        cv2.waitKey(1000)
+        time.sleep(1)
         frame_capture, frame = cap.read()
 
         if not frame_capture:
