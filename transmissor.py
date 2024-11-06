@@ -22,7 +22,7 @@ def show_bits(bits):
     # Adiciona "1001" antes de cada bit na sequência
     bits_with_prefix = ''.join(["1001" + bit for bit in bits])
 
-    color = (0, 255, 0)
+    color = (0, 0, 255)
 
     image = np.zeros((height, width, 3), dtype=np.uint8)
     image[:] = color
@@ -45,9 +45,9 @@ def show_bits(bits):
         image[:] = color
 
         # Adiciona o bit como texto na tela
-        font = cv2.FONT_HERSHEY_SIMPLEX
-        text_color = (0, 0, 0) if bit == '1' else (255, 255, 255)
-        cv2.putText(image, bit, (width // 2 - 50, height // 2), font, 10, text_color, 10, cv2.LINE_AA)
+        #font = cv2.FONT_HERSHEY_SIMPLEX
+        #text_color = (0, 0, 0) if bit == '1' else (255, 255, 255)
+        #cv2.putText(image, bit, (width // 2 - 50, height // 2), font, 10, text_color, 10, cv2.LINE_AA)
 
         # Mostra a imagem na tela
         cv2.imshow('Bit Sequence', image)
@@ -56,21 +56,7 @@ def show_bits(bits):
         # Aguarda 1 segundo
         cv2.waitKey(1000)
 
-    cv2.destroyAllWindows()
-
-    color = (0, 0, 255)
-
-    image = np.zeros((height, width, 3), dtype=np.uint8)
-    image[:] = color
-
-    # Mostra a imagem na tela
-    cv2.imshow('End Connection', image)
-    cv2.setWindowProperty('End Connection', cv2.WND_PROP_FULLSCREEN, cv2.WINDOW_FULLSCREEN)
-
-    # Aguarda 1 segundo
-    cv2.waitKey(1000)
-
-    cv2.destroyAllWindows()
+        cv2.destroyAllWindows()
 
 def main():
     # Solicita a sequência de bits do usuário

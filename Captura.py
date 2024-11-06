@@ -12,6 +12,13 @@ def isGreen(bgr_color)->bool:
     # Define um limiar para considerar uma cor como "vermelha"
     return green > 200 and green > blue and green > red
 
+def isBlack(bgr_color, threshold=30):
+    blue, green, red = bgr_color
+    return blue < threshold and green < threshold and red < threshold
+
+def isWhite(bgr_color, threshold=225):
+    blue, green, red = bgr_color
+    return blue > threshold and green > threshold and red > threshold
 
 def capture():
     cap = cv2.VideoCapture(0)
@@ -57,7 +64,7 @@ def capture():
         gray_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
 
         # Aplicar um threshold para converter em preto e branco
-        _, binary_frame = cv2.threshold(gray_frame, 128, 255, cv2.THRESH_BINARY)
+        _, binary_frame = cv2.threshold(gray_frame, 225, 255, cv2.THRESH_BINARY)
 
         # Mostrar o frame original e o frame binarizado
         #cv2.imshow('Frame Original', frame)
