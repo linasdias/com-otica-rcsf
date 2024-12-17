@@ -1,13 +1,31 @@
+from ultralytics import YOLO
 import cv2
 
-# Definir o número máximo de dispositivos de câmera a testar
-max_tested_cameras = 10
+def main():
+    cap = cv2.VideoCapture(0)
 
-# Percorrer os índices e verificar se a câmera está disponível
-for i in range(max_tested_cameras):
-    cap = cv2.VideoCapture(i)
-    if cap.isOpened():
-        print(f"Câmera encontrada no índice {i}")
-        cap.release()
-    else:
-        print(f"Nenhuma câmera no índice {i}")
+    if not cap.isOpened():
+        print("Error: Couldn't open the camera.")
+        return
+    
+    while True:
+        ret, frame = cap.read()
+        
+        if not ret:
+            print("Error: Couldn't capture the frame.")
+            return
+
+        model = YOLO("screen.pt")
+        results = model.predict(frame)
+        for result in results:
+            x0, y0, w, h = result.boxes.xywh.to("cpu").numpy().astype(int)
+            print(result.boxes.xywh.to("cpu").numpy().astype(int))
+
+        if cv2.waitKey(1) & 0xFF == ord('q'):
+            break
+
+
+
+
+if __name__ == "__main__":
+    main()
