@@ -58,6 +58,8 @@ def capture():
             for color in result.boxes.cls.to("cpu").numpy().astype(int):
                 classification = color
 
+    print("Iniciando a captura dos bits")
+
     while True:
         time.sleep(1)
         frame_capture, frame = cap.read()
@@ -72,10 +74,11 @@ def capture():
 
         if result.names[classification] == "White":
             bits_validos[p] = 1
+            print("1")
             p += 1
-        
-        if result.names[classification] == "Green Screen":
+        elif result.names[classification] == "Green Screen":
             bits_validos[p] = 0
+            print("0")
             p += 1
 
         if p == 8:
